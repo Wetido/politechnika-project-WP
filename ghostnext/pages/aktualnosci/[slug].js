@@ -14,19 +14,30 @@ const PostPage = (props) => {
       <div>
           <NavbarThird></NavbarThird>
 
-
           <main class="single-post-box">
-          <h1 class = "title">{props.post.title.rendered}</h1>
+          
+
+          <div class="wrapper">
+            <div class ="title-box">
+                        <h1 class = "title">{props.post.title.rendered}</h1>
+            </div>
+
+          </div>
           <div class = "grid-container">
-                  <div dangerouslySetInnerHTML={{ __html: props.post.content.rendered }} />
+            <div class="vl">
+
+            <div class="text"dangerouslySetInnerHTML={{ __html: props.post.content.rendered }} />
+           </div>
+
           </div>
         </main>
 
       <style>{`
 
-      .single-post-box{
-
-        padding: 30px;
+      *{
+        font-family: 'Open Sans';
+        line-height: 170%;
+        color: #444;
       }
 
       .grid-container{
@@ -34,39 +45,51 @@ const PostPage = (props) => {
         padding: 30px;
       }
 
-      .title {
-        padding: 30px;
+      .title {  
         text-transform: uppercase;
         letter-spacing: 3px;
         font-weight: bold;
-        color: coral;
-      }
-
-      main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        font-family: sans-serif;
-        overflow:hidden;
-      }
-      h1 {
-        color: coral;
+        color: black;
       }
 
       img {
         width: 100%;
+        heigth: 100%;
         border-radius: 5px;
       }
 
-      .kg-bookmark-card {
+      .wrapper{
 
-        width: 10%;
-        heigth: 10%;
+        background: url('https://img.agrofakt.pl/wp-content/uploads/2019/07/100x478_zetor-wyrozniajace.png') no-repeat center center fixed;
+        background-size: cover;
+        transition: all 0.4s ease;
+        padding: 80px;
+        margin: 0 0 30px 0;
+        text-align: left;
+        height: 40vh;
       }
 
+      .text{
+        text-align: left;
+        margin: 0 0 15px 12%; 
+        width: 75%;
+        padding: 5px;
+        padding-left: 30px;
 
-        
+        border-left: 1px solid #cccccc;
+        transition: all 0.4s ease;
+      }
+
+      
+
+      @media screen and (max-width: 769px) {
+        .title{
+
+
+          font-size: 30px;
+          text-allign: center;
+        }
+      }
 
       `}</style>
 

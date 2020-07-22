@@ -100,7 +100,7 @@ const GalleryPage = (props) => {
 
   
   GalleryPage.getInitialProps = async () => {
-    const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/posts/`)
+    const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/galeria`)
     return {
         posts: response.data
     }

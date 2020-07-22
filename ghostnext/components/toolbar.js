@@ -10,7 +10,7 @@ function Toolbar({ Component, pageProps }) {
      
         <script dangerouslySetInnerHTML={{ __html: 
         `
-        var navSlide = () =>{
+          var navSlide = () =>{
           
           var burger = document.querySelector('.burger');
           var nav = document.querySelector('.nav-bar');

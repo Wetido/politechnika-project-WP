@@ -10,9 +10,13 @@ const PostPage = (props) => {
       <body>
         <NavbarThird/>
         <main>
+
           <h1 class = "title">{props.post.title.rendered}</h1>
+          
           <div class = "grid-container">
-                  <div dangerouslySetInnerHTML={{ __html:props.post.content.rendered}} />
+
+                <div dangerouslySetInnerHTML={{ __html:props.post.content.rendered}} />
+
           </div>
         </main>
 
@@ -109,7 +113,7 @@ const PostPage = (props) => {
 
 
   PostPage.getInitialProps = async (params) => {
-    const response = await axios.get( `http://localhost:8000/wp-json/wp/v2/posts?slug=${ params.query.slug }` )
+    const response = await axios.get( `http://localhost:8000/wp-json/wp/v2/galeria?slug=${ params.query.slug }` )
 
     // Return our only item in array from response to posts object in props.
     return {
