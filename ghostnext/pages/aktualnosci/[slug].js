@@ -1,7 +1,13 @@
-import { getSinglePost } from '../api/posts';
+
 import Head from 'next/head';
 import NavbarThird from '../../components/Navbar-third';
 import axios from 'axios';
+
+import obrazek from '../../images/1.jpg';
+import obrazek2 from '../../images/2.jpg';
+import obrazek3 from '../../images/3.jpg';
+import obrazek4 from '../../images/4.jpg';
+import obrazek5 from '../../images/article.png';
 
 //GENEROWANIE JAKEIKOLWIEK POSTU GDY MAMY DOSTEP DO JEGO ENDPOINTU
 //NP. USER MOZE WPISAC domena/zdjecia2020 i zostanie mu wyswietlona galeria zdj ze stylami 
@@ -12,6 +18,42 @@ import axios from 'axios';
 const PostPage = (props) => {
     return (
       <div>
+
+        
+          <Head>
+            
+            <script dangerouslySetInnerHTML={{ __html: 
+            `
+            var image = document.querySelector('.wrapper');
+
+            var id = ${props.post.id};
+              
+
+            console.log(id);
+            console.log(id%3);
+
+            if( (id % 5) == 0){
+
+              image.style.backgroundImage = "url('${obrazek}')";
+            } else if( (id % 4) == 0){
+
+              image.style.backgroundImage = "url('${obrazek2}')";
+            } else if( (id % 3) == 0){
+
+              image.style.backgroundImage = "url('${obrazek3}')";
+            } else if( (id % 2) == 0) {
+
+              image.style.backgroundImage = "url('${obrazek4}')";
+            } else {
+
+              image.style.backgroundImage = "url('${obrazek5}')";
+            }
+            ` }} />
+
+
+          </Head>
+
+
           <NavbarThird></NavbarThird>
 
           <main class="single-post-box">
@@ -19,7 +61,7 @@ const PostPage = (props) => {
 
           <div class="wrapper">
             <div class ="title-box">
-                        <h1 class = "title">{props.post.title.rendered}</h1>
+            <h1 class = "title">{props.post.title.rendered}</h1>
             </div>
 
           </div>

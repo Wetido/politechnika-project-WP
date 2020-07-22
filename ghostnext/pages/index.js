@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 const NoSSRToolbar = dynamic( () => 
-import('../components/toolbar'), { ssr: false } )
+import('../components/dismissible-banner'), { ssr: false } )
 
 
 const IndexPage = (props) => (
@@ -50,6 +50,7 @@ const IndexPage = (props) => (
           
         ))}
       </ul>
+      
     <Workers/>
     </section>
     <Footer/>
