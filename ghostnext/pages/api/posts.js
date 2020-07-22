@@ -55,13 +55,13 @@ export async function getSinglePost(postSlug) {
   }
 
   export async function getSinglePostByTag(postSlug) { //TO DO
-    // return await api.posts
-    //   .read({
-    //     slug: postSlug
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
+    return await api.posts
+      .read({
+        slug: postSlug
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
 
