@@ -2,12 +2,8 @@
 import Head from 'next/head';
 import NavbarThird from '../../components/Navbar-third';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 
-import obrazek from '../../images/1.jpg';
-import obrazek2 from '../../images/2.jpg';
-import obrazek3 from '../../images/3.jpg';
-import obrazek4 from '../../images/4.jpg';
-import obrazek5 from '../../images/article.png';
 
 //GENEROWANIE JAKEIKOLWIEK POSTU GDY MAMY DOSTEP DO JEGO ENDPOINTU
 //NP. USER MOZE WPISAC domena/zdjecia2020 i zostanie mu wyswietlona galeria zdj ze stylami 
@@ -15,56 +11,18 @@ import obrazek5 from '../../images/article.png';
 //domena/galeria/2020 i tam znajduje się stylizowanie galerii. Trzeba coś z tym zrobić poprawiajac te endpointy.
 //Tak samo możeny przejść pod adres domena/galeria/welcome i uzyskamy zwykł post w stylu galerii.
 
+const ImageWrapper = dynamic( () => 
+import('../../components/image-wrapper'), { ssr: false } )
+
 const PostPage = (props) => {
     return (
       <div>
 
-        
-          <Head>
-            
-            <script dangerouslySetInnerHTML={{ __html: 
-            `
-            var image = document.querySelector('.wrapper');
-
-            var id = ${props.post.id};
-              
-
-            console.log(id);
-            console.log(id%3);
-
-            if( (id % 5) == 0){
-
-              image.style.backgroundImage = "url('${obrazek}')";
-            } else if( (id % 4) == 0){
-
-              image.style.backgroundImage = "url('${obrazek2}')";
-            } else if( (id % 3) == 0){
-
-              image.style.backgroundImage = "url('${obrazek3}')";
-            } else if( (id % 2) == 0) {
-
-              image.style.backgroundImage = "url('${obrazek4}')";
-            } else {
-
-              image.style.backgroundImage = "url('${obrazek5}')";
-            }
-            ` }} />
-
-
-          </Head>
-
-
           <NavbarThird></NavbarThird>
 
           <main class="single-post-box">
-          
+          <ImageWrapper greeting={props.post}/>
 
-          <div class="wrapper">
-            <div class ="title-box">
-            <h1 class = "title">{props.post.title.rendered}</h1>
-            </div>
-
-          </div>
           <div class = "grid-container">
             <div class="vl">
 
@@ -87,12 +45,7 @@ const PostPage = (props) => {
         padding: 30px;
       }
 
-      .title {  
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-weight: bold;
-        color: black;
-      }
+     
 
       img {
         width: 100%;
@@ -100,16 +53,7 @@ const PostPage = (props) => {
         border-radius: 5px;
       }
 
-      .wrapper{
-
-        background: url('https://img.agrofakt.pl/wp-content/uploads/2019/07/100x478_zetor-wyrozniajace.png') no-repeat center center fixed;
-        background-size: cover;
-        transition: all 0.4s ease;
-        padding: 80px;
-        margin: 0 0 30px 0;
-        text-align: left;
-        height: 40vh;
-      }
+      
 
       .text{
         text-align: left;
