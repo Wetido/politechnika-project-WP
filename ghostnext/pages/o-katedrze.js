@@ -1,4 +1,3 @@
-import { getPosts, getSinglePost, getAuthor } from './api/posts';
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';

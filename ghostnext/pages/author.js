@@ -1,4 +1,4 @@
-import { getAuthor } from './api/posts';
+
 
 const AuthorPage = (props) => {
     return (
