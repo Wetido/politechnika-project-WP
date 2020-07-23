@@ -155,7 +155,7 @@ IndexPage.getInitialProps = async () => {
 }
 
 
-export default IndexPage
+export default IndexPage;
 
 
 
