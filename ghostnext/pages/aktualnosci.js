@@ -3,7 +3,7 @@ import NavbarThird from '../components/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import Link from 'next/link';
-
+import Cookies from 'universal-cookie';
 
   const NewsPage = (props) => (
 
@@ -66,6 +66,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 1em;
   padding: 1px;
+  word-wrap: break-word;
 }
 
 .post-article {
@@ -95,9 +96,42 @@ body {
   );
 
 
+  const instance = axios.create({
+    baseURL: 'http://localhost:8000/wp-json/wp/v2/posts',
+    timeout: 1000,
+    headers: {'Authorization': 'Bearer '+ 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMCIsImlhdCI6MTU5NTYwNzY1NCwibmJmIjoxNTk1NjA3NjU0LCJleHAiOjE1OTYyMTI0NTQsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.mtLXiyEyvGhFKdLKIYFEhil186ptJrPjfgzjJFg3C5M'}
+  });
+
+ function getData(){
+
+    instance.get('/')
+    .then(response => {
+      console.log(response)
+      return response.data;
+    })
+  }
+
 
 NewsPage.getInitialProps = async () => {
-  const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/posts`)
+
+  const cookies = new Cookies();
+  const token = cookies.get('token');
+  var response;
+
+  if( token != null){
+
+    const api = 'http://localhost:8000/wp-json/wp/v2/posts?&status=private'; 
+    response = await axios.get(api , { headers: {"Authorization" : `Bearer ${token}`}} );
+  }
+
+  else{
+
+    const api = 'http://localhost:8000/wp-json/wp/v2/posts/'; 
+    response = await axios.get(api);
+
+  
+  }
+  
   return {
       posts: response.data
   }

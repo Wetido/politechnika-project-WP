@@ -28,7 +28,8 @@ const NavbarThird = () => (
   <Link href={'/o-katedrze'}><a class="nav-item nav-link" > o katedrze </a></Link>
   <Link href={'/aktualnosci'}><a class="nav-item nav-link " > aktualności</a></Link>
   <Link href={'/galeria'}><a class="nav-item nav-link " > galeria</a></Link>
-  <Link href={'/login-page'}><a class="nav-item nav-link " > login</a></Link>
+  <Link href={'/login-page'}><a class="nav-item nav-link ">login</a></Link>
+  
     
   </div>
 </div>

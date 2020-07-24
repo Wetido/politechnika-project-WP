@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import user from '../images/user.png';
-
+import Cookies from 'universal-cookie';
 
 class Login extends React.Component{
 
@@ -27,10 +27,17 @@ class Login extends React.Component{
       body: JSON.stringify(values),
     })
     .then(response => { return response.json();})
-    .then(responseData => {console.log(responseData); return responseData;})
-    .then(data => {this.setState({"questions" : data});})
+    .then(responseData => {
+      console.log(responseData); 
 
-    
+      ///obsługa wyjątków
+      const cookies = new Cookies();
+      cookies.set('token', responseData.token, { path: '/' });
+      console.log(cookies.get('token')); // Pacman 
+
+      return responseData;
+    })
+  
 
   }
 
