@@ -11,7 +11,7 @@ import obrazek5 from '../images/article.png';
 const ImageWrapper = (props) => (
 <div>
 <Head>
-            
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/> 
             <script dangerouslySetInnerHTML={{ __html: 
             `
             var image = document.querySelector('.wrapper');
@@ -45,9 +45,9 @@ const ImageWrapper = (props) => (
 
           
           <div class="wrapper">
-            <div class ="title-box">
+           
             <h1 class = "title">{props.greeting.title.rendered}</h1>
-            </div>
+
 
           </div>
     
@@ -69,7 +69,20 @@ const ImageWrapper = (props) => (
     letter-spacing: 3px;
     font-weight: bold;
     color: black;
+    background:rgba(255,255,255, 0.3);
+    padding:10px;
+    background-size: auto;
+    font-family:Roboto;
   }
+
+  
+  @media screen and (max-width: 769px) {
+    .title{
+
+
+      font-size: 30px;
+      text-allign: center;
+    }
     `}</style> 
 
 </div> 

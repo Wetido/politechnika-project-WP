@@ -39,13 +39,26 @@ const PostPage = (props) => {
         line-height: 170%;
         color: #444;
       }
+      .wp-block-file{
+        background-color: #353a40;
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration:none;
+      }
+      .wp-block-file__button
+      {
+        color:white;
+      visibility:hidden;
+      }
 
       .grid-container{
 
         padding: 30px;
       }
 
-     
 
       img {
         width: 100%;
@@ -68,13 +81,6 @@ const PostPage = (props) => {
 
       
 
-      @media screen and (max-width: 769px) {
-        .title{
-
-
-          font-size: 30px;
-          text-allign: center;
-        }
       }
 
       `}</style>

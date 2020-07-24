@@ -61,7 +61,9 @@ const IndexPage = (props) => (
             <li key={post.id} class="post-li">
 
                 <h1 class = "post-a">{post.title.rendered}</h1>
+
                 <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>        
+
                 <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
                 <button class="view-more">Zobacz więcej</button> 
                 </Link>
