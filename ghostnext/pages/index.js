@@ -41,7 +41,7 @@ const IndexPage = (props) => (
             <li key={post.id} class="post-li">
 
                 <h1 class = "post-a">{post.title.rendered}</h1>
-                <p>{post.excerpt.rendered}</p>           {/* do poprawienia */}
+                {post.excerpt.rendered}         {/* do poprawienia */}
                 <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
                 <button class="view-more">Zobacz więcej</button> 
                 </Link>
