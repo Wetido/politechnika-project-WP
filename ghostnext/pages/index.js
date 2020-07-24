@@ -7,32 +7,46 @@ import Head from 'next/head';
 import NavbarThird from '../components/Navbar-third';
 import Workers from '../components/Workers';
 import Footer from '../components/footer';
+import Spacer from '../components/Spacer';
 
 import Link from 'next/link';
 import axios from 'axios';
+import obrazek2 from '../images/2.jpg';
 
 
-
-const NoSSRToolbar = dynamic( () => 
-import('../components/dismissible-banner'), { ssr: false } )
+const NoSSRWorkers = dynamic( () => 
+import('../components/workers'), { ssr: false } )
 
 
 const IndexPage = (props) => (
  <body>
 <Head>
 <link rel="shortcut icon" href="ghostnext\public\favicon.ico" />
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script>
+  
+  </script>
 </Head>
 
 
   <div>
 
-    <NavbarThird/>
 
-    <section class="padding-box">
-    <Carousel/>
-    
+    <NavbarThird class = "navbar"></NavbarThird>
+    <div class="padding-navbar"></div>
 
+
+
+
+    <section class="carousel-wrapper">
+      <Carousel class="carousel"/>
+    </section>
+
+
+
+    <section class="news-wrapper">
     <h2 class="news-branch">Aktualności</h2>
+    <Spacer/>
     <ul class = "box">
 
         {props.posts.map(post => (
@@ -49,22 +63,23 @@ const IndexPage = (props) => (
 
           
         ))}
-      </ul>
-      
-    <Workers/>
+      </ul>  
     </section>
+      
+    <section class="workers-wrapper"> 
+
+
+      <Workers/>
+
+    </section>
+
+    </div>
+
     <Footer/>
 
 
-  </div>
 
   <style >{`
-
-  .padding-box{
-
-    padding: 40px 80px 20px 80px;
-  }
-
 
   body {
     background: #f5f0f0;
@@ -72,12 +87,52 @@ const IndexPage = (props) => (
   }
 
 
+
+  .carousel{
+
+    background: #121111;
+    padding: 3px;
+  }
+
+
+  .padding-navbar{
+
+
+    padding: 35px;
+  }
+
+  .carousel-wrapper{
+
+    background: #e3e3e3;
+    padding: 60px;
+  }
+
+  .news-wrapper{
+
+    background: #ebe8e8;
+    padding: 60px;
+  }
+
+  .workers-wrapper{
+
+    background: #e3e3e3;
+    padding: 60px;
+  }
+
+  .navbar{
+
+    position: fixed;
+    z-index: 20;
+    width:100%;
+  }
+
    .news-branch{
-    padding-left: 60px;
-    padding-top: 1em;
+    padding-top: 0.7em;
+    font-size: 2.4em;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
+    text-align:center;
    }
 
 
@@ -93,6 +148,7 @@ const IndexPage = (props) => (
       padding: 25px 40px 25px 40px;
       width: 31%;
       background-color: #cecece;
+      border: 1px solid #3498db;
       border-radius: 25px;
       margin: 10px 10px 10px 10px;
       align-items: center;

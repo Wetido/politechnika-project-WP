@@ -1,13 +1,21 @@
 import Link from 'next/link';
-import Head from 'next/head';
 import worker1 from '../images/banach_h.jpg';
 import worker2 from '../images/jarzyna_w.jpg';
 import worker3 from '../images/kolano_j.jpg';
 import worker4 from '../images/machlarz_r.jpg';
+import Spacer from './spacer';
+import Head from 'next/head';
+
+
+
+
 
 const Workers = () => (
 <div>
+
+
     <h2 class="worker-branch">Nasi Pracownicy</h2>
+    <Spacer/>
     <div class="container-worker">
         
         <div class="worker">
@@ -29,10 +37,8 @@ const Workers = () => (
         <img class="worker-images" src={worker4} alt="First slide"/>
         <p>Młody chlop</p> 
         </div>
-        <div class="view-more-box">
 
         <Link href={'/aktualnosci'}><a class="view-more-worker">zobacz więcej</a></Link>
-        </div>
 
     </div>
 
@@ -42,12 +48,12 @@ const Workers = () => (
 
    .worker-branch{
 
-        padding-left: 60px;
         padding-top: 1em;
-        padding-bottom: 1em;
         text-transform: uppercase;
+        font-size: 2.4em;
         letter-spacing: 2px;
         font-weight: bold;
+        text-align: center;
 
    }
 
@@ -57,8 +63,6 @@ const Workers = () => (
         flex-wrap: wrap;
         padding:5px;
         justify-content:center;
-        margin: 0 auto;
-        padding-left: 60px;
         text-align: center;
     }
     
@@ -67,7 +71,7 @@ const Workers = () => (
     .worker{
 
         width: 23%;
-        margin: 5px 5px 5px 5px;
+        margin: 5px 5px 0px 5px;
     }
     
 
@@ -96,11 +100,10 @@ const Workers = () => (
         font-size: 20px;
         font family: "montserrat";
         cusros: pointer;
-        margin: 10px;
         color: #3498db;
         transition: 0.8s;
-        position: relative:
         overflow: hidden;
+        margin-bottom: 30px;
       }
   
       .view-more-worker:hover {

@@ -73,7 +73,7 @@ const Carousel = () => (
   justify-content:center;
 }
 .carousel-inner{
-padding:20px;
+padding:18px;
 width:100%;
 max-height: 500px !important;
 
@@ -84,7 +84,6 @@ max-height: 500px !important;
 img {
 
 height:400px;
-border: solid black 1px;
 }
 .item{
   text-align:center;
