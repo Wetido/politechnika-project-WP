@@ -3,8 +3,40 @@ import Head from 'next/head';
 import user from '../images/user.png';
 
 
-const Login = () => (
-<div>
+class Login extends React.Component{
+
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+
+    event.preventDefault();
+
+    let values = {
+
+      username: event.target.username.value,
+      password: event.target.password.value,
+
+    }
+
+    fetch('http://localhost:8000/wp-json/jwt-auth/v1/token', {
+      method: 'POST',
+      headers: {'Content-type':'application/json'},
+      body: JSON.stringify(values),
+    })
+    .then(response => { return response.json();})
+    .then(responseData => {console.log(responseData); return responseData;})
+    .then(data => {this.setState({"questions" : data});})
+
+    
+
+  }
+
+  render() {
+    return (
+      <div>
     <Head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -19,9 +51,9 @@ const Login = () => (
     </div>
 
 
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"/>
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+    <form onSubmit={this.handleSubmit}>
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="login"/>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password"/>
       <input type="submit" class="fadeIn fourth" value="Log In"/>
     </form>
 
@@ -303,6 +335,9 @@ html {
 
 </div> 
 );
+  
+  }
+}
 
 
 
