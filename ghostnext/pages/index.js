@@ -18,6 +18,12 @@ const NoSSRWorkers = dynamic( () =>
 import('../components/workers'), { ssr: false } )
 
 
+function removeParagraphTags (excerpt) {
+  return excerpt.substr(3, excerpt.length - 8)
+}
+
+
+
 const IndexPage = (props) => (
  <body>
 <Head>
@@ -55,7 +61,7 @@ const IndexPage = (props) => (
             <li key={post.id} class="post-li">
 
                 <h1 class = "post-a">{post.title.rendered}</h1>
-                <p>{post.excerpt.rendered}</p>           {/* do poprawienia */}
+                <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>        
                 <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
                 <button class="view-more">Zobacz więcej</button> 
                 </Link>
@@ -110,7 +116,7 @@ const IndexPage = (props) => (
   .news-wrapper{
 
     background: #ebe8e8;
-    padding: 60px;
+    padding: 30px;
   }
 
   .workers-wrapper{
