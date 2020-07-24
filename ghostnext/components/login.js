@@ -45,6 +45,9 @@ class Login extends React.Component{
     return (
       <div>
     <Head>
+
+
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -82,6 +85,7 @@ html {
   body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
+    overflow:hidden;
   }
   
   a {
@@ -112,9 +116,10 @@ html {
     justify-content: center;
     width: 100%;
     min-height: 100%;
-    padding: 150px;
+    padding: 55px;
     margin:0 auto;
-    overflow:hidden;
+
+
 
   }
   
@@ -130,6 +135,8 @@ html {
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
+
+    overflow:hidden;
   }
   
   #formFooter {
@@ -168,7 +175,7 @@ html {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 20px 10px 30px 0 rgba(95,186,233,0.4);
     box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
