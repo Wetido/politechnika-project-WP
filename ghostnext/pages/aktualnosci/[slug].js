@@ -74,7 +74,7 @@ const PostPage = (props) => {
         width: 75%;
         padding: 5px;
         padding-left: 30px;
-
+        
         border-left: 1px solid #cccccc;
         transition: all 0.4s ease;
       }

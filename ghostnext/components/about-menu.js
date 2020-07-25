@@ -90,10 +90,7 @@ const Menu = () => (
     background-position: 100%;
   }
   
-  .links{
 
-    background: url('${obrazek2}') no-repeat center center fixed;
-  }
 
   body {
   
@@ -112,7 +109,8 @@ const Menu = () => (
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 87vh;
+    
   }
   
   .links__list {
