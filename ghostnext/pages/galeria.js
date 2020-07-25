@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
 import NavbarThird from '../components/Navbar-third';
+import Spacer from '../components/spacer';
 import axios from 'axios';
 //STRONA GŁÓWNA GALERII
 
@@ -14,6 +15,7 @@ const GalleryPage = (props) => {
             <section>
                 <ul class = "page">
                 <h2 class="news-header">Najnowsze galerie zdjęć</h2>
+                <Spacer></Spacer>
                 <br/>
                         {props.posts.map(posts => (
 
@@ -45,8 +47,12 @@ const GalleryPage = (props) => {
         
             .news-header{
         
-              padding-left: 20px;
-              font-size: 30px;
+              padding: 30px 0 0 0;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              font-weight: bold;
+              font-size: 1.8rem;
+              text-align: center;
             }
         
             .post-title{

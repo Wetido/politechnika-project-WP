@@ -12,6 +12,7 @@ const ImageWrapper = (props) => (
 <div>
 <Head>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/> 
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
             <script dangerouslySetInnerHTML={{ __html: 
             `
             var image = document.querySelector('.wrapper');
@@ -72,7 +73,7 @@ const ImageWrapper = (props) => (
     background:rgba(255,255,255, 0.3);
     padding:10px;
     background-size: auto;
-    font-family:Roboto;
+    font-family:Poppins;
   }
 
   
