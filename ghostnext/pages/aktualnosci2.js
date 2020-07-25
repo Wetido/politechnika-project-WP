@@ -54,6 +54,15 @@ function removeParagraphTags (excerpt) {
 
 }
 
+.post-title{
+
+  padding: 20px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .news-header{
 
   padding: 30px 0 0 0;
@@ -82,15 +91,28 @@ function removeParagraphTags (excerpt) {
   width: 49%;
   height: 300px;
   text-align: center;
-  background: black;
-  border-radius: 25px;
-  background-color: #cecece;
+
+  border-radius: 10px;
+  background-color: #fff;
   border: 1px solid #3498db;
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    transition: 0.2s;
 
 }
+.single-post:hover{
 
+  box-shadow:
+    2px rgba(0, 0, 0, 0.8),
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer;
+}
 
 
 
