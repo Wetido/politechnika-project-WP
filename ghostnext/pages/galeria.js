@@ -4,6 +4,20 @@ import NavbarThird from '../components/Navbar-third';
 import axios from 'axios';
 //STRONA GŁÓWNA GALERII
 
+function getImg(excpert){
+
+  const startPosition = 'src=';
+  const endPosition = '.jpg';
+
+  var start = ( excpert.indexOf(startPosition) );
+  var end = ( excpert.indexOf(endPosition) );
+
+  console.log(start);
+  console.log(end);
+
+  return excpert.slice(start +5 ,end + 4);
+}
+
 
 const GalleryPage = (props) => {
     return (
@@ -25,6 +39,9 @@ const GalleryPage = (props) => {
                             <div>  
                                 <a class = "post-title">{posts.title.rendered}</a>
                             </div>
+
+                            <img src = {getImg(posts.content.rendered)}/>
+
 
                             </li>
 
