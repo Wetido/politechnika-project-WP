@@ -26,7 +26,7 @@ class Login extends React.Component{
       headers: {'Content-type':'application/json'},
       body: JSON.stringify(values),
     })
-lo    .then(response => { 
+     .then(response => { 
       if( response.ok ){
         
         return response.json();
