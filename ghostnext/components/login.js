@@ -35,6 +35,7 @@ class Login extends React.Component{
       cookies.set('token', responseData.token, { path: '/' });
       console.log(cookies.get('token')); // Pacman 
 
+      window.location.reload(false);
       return responseData;
     })
   
