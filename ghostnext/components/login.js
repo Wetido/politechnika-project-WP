@@ -26,17 +26,33 @@ class Login extends React.Component{
       headers: {'Content-type':'application/json'},
       body: JSON.stringify(values),
     })
-    .then(response => { return response.json();})
+lo    .then(response => { 
+      if( response.ok ){
+        
+        return response.json();
+
+      } else {
+
+        alert("Podales bledne dane");
+        return null;
+      }
+    })
     .then(responseData => {
-      console.log(responseData); 
 
-      ///obsługa wyjątków
-      const cookies = new Cookies();
-      cookies.set('token', responseData.token, { path: '/' });
-      console.log(cookies.get('token')); // Pacman 
+      if( responseData == null ){
 
-      window.location.reload(false);
-      return responseData;
+        return null;
+      } else {
+
+        alert("Dane poprawne");
+        const cookies = new Cookies();
+        cookies.set('token', responseData.token, { path: '/' });
+        console.log(cookies.get('token')); // Pacman 
+
+        window.location.reload(false);
+        return responseData;
+      }
+
     })
   
 
