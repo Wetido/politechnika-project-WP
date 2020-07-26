@@ -12,7 +12,7 @@ function removeParagraphTags (excerpt) {
 }
 
 
-  const NewsPage = (props) => (
+  const Materials = (props) => (
 
       <div>
         <NavbarThird></NavbarThird>
@@ -26,12 +26,12 @@ function removeParagraphTags (excerpt) {
             props.posts.map( post => {
               return (
               <div class="single-post">
-                <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
+                <Link href={`/materialy/[slug]`} as={`/materialy/${post.slug}`}>
                 <li key={ post.id }  class="post-article">
                 <div>
 
                   <h1 class="post-title">{ post.title.rendered }</h1> 
-                  <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>           {/* do poprawienia */}
+                  {/* <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>           */}
                 </div>
                 </li>       
                 </Link>
@@ -123,17 +123,19 @@ function removeParagraphTags (excerpt) {
   );
 
 
- 
 
 
-NewsPage.getInitialProps = async () => {
+ Materials.getInitialProps = async () => {
+
+  const cookies = new Cookies();
+  const token = cookies.get('token');
+  var response;
+
+  const api = 'http://localhost:8000/wp-json/wp/v2/materialy?&status=private'; 
+  response = await axios.get(api , { headers: {"Authorization" : `Bearer ${token}`}} );
 
 
 
-    const api = 'http://localhost:8000/wp-json/wp/v2/posts/'; 
-    response = await axios.get(api);
-
-    
   return {
       posts: response.data
   }
@@ -141,6 +143,6 @@ NewsPage.getInitialProps = async () => {
 
 
 
-export default NewsPage;
+export default Materials;
 
 
