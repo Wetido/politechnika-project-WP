@@ -31,7 +31,7 @@ const Menu = () => (
     
 
     
-    <Link href={'/o-katedrze/historia'}> 
+    <Link href={'/o-katedrze/historia3'}> 
     <li class="links__item3 links__item" >
      
      <a class="links__link3 links__link">
@@ -126,7 +126,7 @@ const Menu = () => (
     left: 0;
     margin-top: calc(var(--link-size)/-2);
     margin-left: calc(var(--link-size)/-2);
-
+    cursor:pointer;
     transform: rotate(var(--rotation)) translate(calc(var(--link-size) + var(--base-grid)*2)) rotate(calc(var(--rotation)*-1));
   }
 
