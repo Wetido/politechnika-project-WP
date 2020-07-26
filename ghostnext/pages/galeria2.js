@@ -1,4 +1,4 @@
-
+import obrazek4 from '../images/4.jpg';
 import NavbarThird from '../components/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
@@ -31,8 +31,8 @@ function getImg(excpert){
 
       <div>
         <NavbarThird></NavbarThird>
-        <h2 class="news-header">Najnowsze posty</h2>
-        <Spacer/>
+        <h2 class="news-header">Najnowsze galerie zdjęć</h2>
+        <Spacer></Spacer>
 
 
         <section class="articles-wrapper"> 
@@ -46,8 +46,10 @@ function getImg(excpert){
                 <div>
 
                   <h1 class="post-title">{ post.title.rendered }</h1> 
-                  <div class="image-wrapper">
-                  <img src = {getImg(post.content.rendered)} class="image"></img>
+                  
+                  
+                  <div class="fotki">
+                  <img class="thumbnail-post" src = {getImg(post.content.rendered)} ></img>
                   </div>
                 </div>
                 </li>       
@@ -63,19 +65,30 @@ function getImg(excpert){
 
 ///////////////////////////////
 
-.image-wrapper{
+.fotki {
+  height: 100%;
+  width: 100%;
+
 
 }
-
-.image{
-  width: 100%;
-  max-height: 10%;
+.thumbnail-post {
+  height: auto;
+  float: center;
+  max-width: 100%;
 }
 
 .articles-wrapper {
 
   margin: 20px;
 
+}
+
+.post-title{
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .news-header{
@@ -99,20 +112,34 @@ function getImg(excpert){
 
 .single-post{
 
-  padding: 30px;
-  margin: 10px 0px 10px 10px;
+  padding: 20px;
+  margin: 10px 10px 10px 10px;
   list-style: none;
   display: inline-block;
-  width: 49%;
-  height: 300px;
+  width: 48%;
+  height: auto;
   text-align: center;
-  background: black;
-  border-radius: 25px;
-  background-color: #cecece;
+
+  border-radius: 10px;
+  background-color: #fff;
   border: 1px solid #3498db;
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    transition: 0.2s;
 
+}
+.single-post:hover{
+
+  box-shadow:
+    2px rgba(0, 0, 0, 0.8),
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 
