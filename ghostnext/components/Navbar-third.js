@@ -11,6 +11,7 @@ function logout() {
   const cookies = new Cookies();
   cookies.remove('token');
   window.location.reload(false);
+  window.location.replace("http://localhost:3000/");
  } 
 
 

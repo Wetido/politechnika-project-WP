@@ -20,22 +20,22 @@ const Workers = () => (
         
         <div class="worker">
         <img class="worker-images" src={worker1} alt="First slide"/>
-        <p>Slawny chlop</p> 
+        <p>Profesor</p> 
         </div>
         
         <div class="worker">
         <img class="worker-images" src={worker2} alt="First slide"/>
-        <p>Madry chlop</p> 
+        <p>Doktor</p> 
         </div>
         
         <div class="worker">
         <img class="worker-images" src={worker3} alt="First slide"/>
-        <p>Przystojny chlop</p> 
+        <p>Doktor Habilitowany</p> 
         </div>
         
         <div class="worker">
         <img class="worker-images" src={worker4} alt="First slide"/>
-        <p>Młody chlop</p> 
+        <p>Master Of Science</p> 
         </div>
 
         <Link href={'/aktualnosci'}><a class="view-more-worker">zobacz więcej</a></Link>

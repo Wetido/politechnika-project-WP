@@ -1,6 +1,7 @@
 
 import NavbarThird from'../../components/Navbar-third';
 import axios from 'axios'
+import Spacer from '../../components/Spacer';
 
 //TU ZNAJDUJE SIĘ POJEDYNCZY POST GALERII
 
@@ -11,8 +12,8 @@ const PostPage = (props) => {
         <NavbarThird/>
         <main>
 
-          <h1 class = "title">{props.post.title.rendered}</h1>
-          
+          <h1 class = "news-header">{props.post.title.rendered}</h1>
+          <Spacer></Spacer>
           <div class = "grid-container">
 
                 <div dangerouslySetInnerHTML={{ __html:props.post.content.rendered}} />
@@ -23,13 +24,16 @@ const PostPage = (props) => {
       <style>{`
 
 
-      .title {
-        padding: 30px;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-weight: bold;
-        color: coral;
-      }
+.news-header{
+        
+  padding: 30px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center;
+  color:black;
+}
 
       main {
         display: flex;
