@@ -106,6 +106,13 @@ const PostPage = (props) => {
         }
       }
 
+      
+      
+      ul{
+      
+        list-style: none;
+      }
+
 
 
       `}</style>
