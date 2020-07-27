@@ -25,8 +25,9 @@ function removeParagraphTags (excerpt) {
           {
             props.posts.map( post => {
               return (
-              <div class="single-post">
                 <Link href={`/materialy/[slug]`} as={`/materialy/${post.slug}`}>
+              <div class="single-post">
+
                 <li key={ post.id }  class="post-article">
                 <div>
 
@@ -34,8 +35,9 @@ function removeParagraphTags (excerpt) {
                   {/* <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>           */}
                 </div>
                 </li>       
-                </Link>
+
               </div>
+              </Link>
               )
             })}
           </ul>
