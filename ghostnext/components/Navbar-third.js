@@ -53,7 +53,7 @@ class NavbarThird extends React.Component{
           <Link href={'/'}><a class="nav-item nav-link" > strona główna<span class="sr-only">(current)</span></a></Link>
           <Link href={'/o-katedrze'}><a class="nav-item nav-link" > o katedrze </a></Link>
           <Link href={'/aktualnosci'}><a class="nav-item nav-link " > aktualności</a></Link>
-          <Link href={'/galeria'}><a class="nav-item nav-link " >galeria</a></Link>
+          <Link href={'/galeria2'}><a class="nav-item nav-link " >galeria</a></Link>
           <Link href={'/kontakt'}><a class="nav-item nav-link ">kontakt</a></Link>
           <a onClick={logout} class="nav-item nav-link ">wyloguj</a>
           <Link href={'/materialy'}><a class="nav-item nav-link ">materiały</a></Link>
