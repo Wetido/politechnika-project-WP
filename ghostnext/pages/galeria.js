@@ -1,9 +1,16 @@
-
-import Link from 'next/link';
+import obrazek4 from '../images/4.jpg';
 import NavbarThird from '../components/Navbar-third';
-import Spacer from '../components/spacer';
-import axios from 'axios';
-//STRONA GŁÓWNA GALERII
+import React, { Component, Fragment } from 'react'
+import axios from 'axios'
+import Link from 'next/link';
+import Cookies from 'universal-cookie';
+
+import Spacer from '../components/Spacer';
+
+function removeParagraphTags (excerpt) {
+  return excerpt.substr(3, excerpt.length - 8)
+}
+
 
 function getImg(excpert){
 
@@ -20,113 +27,138 @@ function getImg(excpert){
 }
 
 
-const GalleryPage = (props) => {
-    return (
+  const GalleryPage2 = (props) => (
 
-        <body>
-            
-            <NavbarThird/>
-            <section>
-                <ul class = "page">
-                <h2 class="news-header">Najnowsze galerie zdjęć</h2>
-                <Spacer></Spacer>
-                <br/>
-                        {props.posts.map(posts => (
-
-                        <div class="post-div">
-                        <Link href={`galeria/[slug]`} as={`galeria/${posts.slug}`}>
-            
-                            <li key={posts.id} class="post-article">
-
-                            <div>  
-                                <a class = "post-title">{posts.title.rendered}</a>
-                            </div>
-
-                            <img src = {getImg(posts.content.rendered)}/>
+      <div>
+        <NavbarThird></NavbarThird>
+        <h2 class="news-header">Najnowsze galerie zdjęć</h2>
+        <Spacer></Spacer>
 
 
-                            </li>
+        <section class="articles-wrapper"> 
+        <ul class = "page">
+          {
+            props.posts.map( post => {
+              return (
+              <div class="single-post">
+                <Link href={`/galeria/[slug]`} as={`/galeria/${post.slug}`}>
+                <li key={ post.id }  class="post-article">
+                <div>
 
-                        </Link>
-                        </div>
-
-                        ))}
-                 </ul>
-            </section>
-
-         <style >{`
-
-
-          body {
-            background: #f5f0f0;
-        
-            }
-        
-            .news-header{
-        
-              padding: 30px 0 0 0;
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              font-weight: bold;
-              font-size: 1.8rem;
-              text-align: center;
-            }
-        
-            .post-title{
-        
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              font-weight: bold;
-              font-size: 1.8rem;
-            }
-            
-           
-            .page {
-              padding: 2em;
-              list-style: none;
-            }
-            
-            .post-div {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-              grid-gap: 1em;
-              padding: 1px;
-            }
-            
-            .post-article {
-              padding: 2em;
-              background: #fff;
-              box-shadow:
-                0 5px 10px rgba(0, 0, 0, 0.3),
-                -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
-                -moz-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
-                box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
-                transition: 0.2s;
-        
-            }
-        
-            .post-article:hover{
-        
-              box-shadow:
-                2px rgba(0, 0, 0, 0.8),
-              padding: 3px;
-              margin: 5px;
-              cursor: pointer;
-            }
-
-        `}</style>
-        </body>
-
-    )
-  }
+                  <h1 class="post-title">{ post.title.rendered }</h1> 
+                  
+                  
+                  <div class="fotki">
+                  <img class="thumbnail-post" src = {getImg(post.content.rendered)} ></img>
+                  </div>
+                </div>
+                </li>       
+                </Link>
+              </div>
+              )
+            })}
+          </ul>
+        </section>
 
 
-  
-  GalleryPage.getInitialProps = async () => {
+        <style >{` 
+
+///////////////////////////////
+
+.fotki {
+  height: 100%;
+  width: 100%;
+
+
+}
+.thumbnail-post {
+  height: auto;
+  float: center;
+  max-width: 70%;
+}
+
+.articles-wrapper {
+
+  margin: 20px;
+
+}
+
+.post-title{
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.news-header{
+
+  padding: 30px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+
+.page {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 80px 10px 70px;
+}
+
+.single-post{
+
+  padding: 20px;
+  margin: 10px 10px 10px 10px;
+  list-style: none;
+  display: inline-block;
+  width: 48%;
+  height: auto;
+  text-align: center;
+
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #3498db;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+    transition: 0.2s;
+
+}
+.single-post:hover{
+
+  box-shadow:
+    2px rgba(0, 0, 0, 0.8),
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+`}</style>
+
+   </div>
+  );
+
+
+  GalleryPage2.getInitialProps = async () => {
     const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/galeria`)
     return {
         posts: response.data
     }
   }
-  
-  export default GalleryPage;
+
+export default GalleryPage2;
+
+

@@ -5,27 +5,39 @@ import axios from 'axios'
 import Link from 'next/link';
 import Cookies from 'universal-cookie';
 
+import Spacer from '../components/Spacer';
+
+function removeParagraphTags (excerpt) {
+  return excerpt.substr(3, excerpt.length - 8)
+}
+
+
   const NewsPage = (props) => (
 
-      <body>
+      <div>
         <NavbarThird></NavbarThird>
-        <section>
-        <ul class = "page">
         <h2 class="news-header">Najnowsze posty</h2>
-        <br/>
+        <Spacer/>
+
+
+        <section class="articles-wrapper"> 
+        <ul class = "page">
           {
             props.posts.map( post => {
               return (
-              <div>
                 <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
+              <div class="single-post">
+                
                 <li key={ post.id }  class="post-article">
                 <div>
 
                   <h1 class="post-title">{ post.title.rendered }</h1> 
+                  <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>           {/* do poprawienia */}
                 </div>
                 </li>       
-                </Link>
+
               </div>
+              </Link>
               )
             })}
           </ul>
@@ -36,42 +48,57 @@ import Cookies from 'universal-cookie';
 
 ///////////////////////////////
 
-body {
- background: #f5f0f0;
 
-}
 
-.news-header{
+.articles-wrapper {
 
-  padding-left: 20px;
-  font-size: 30px;
+  margin: 20px;
+
 }
 
 .post-title{
 
+  padding: 20px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.news-header{
+
+  padding: 30px 0 0 0;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
   font-size: 1.8rem;
+  text-align: center;
 }
 
 
 .page {
-  padding: 2em;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 80px 10px 70px;
+}
+
+.single-post{
+
+  padding: 30px;
+  margin: 10px 0px 10px 10px;
   list-style: none;
-}
+  display: inline-block;
+  width: 49%;
+  height: 300px;
+  text-align: center;
 
-.post-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-gap: 1em;
-  padding: 1px;
-  word-wrap: break-word;
-}
-
-.post-article {
-  padding: 2em;
-  background: #fff;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #3498db;
+  position: relative;
+  overflow: hidden;
   box-shadow:
     0 5px 10px rgba(0, 0, 0, 0.3),
     -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
@@ -80,8 +107,7 @@ body {
     transition: 0.2s;
 
 }
-
-.post-article:hover{
+.single-post:hover{
 
   box-shadow:
     2px rgba(0, 0, 0, 0.8),
@@ -90,52 +116,32 @@ body {
   cursor: pointer;
 }
 
+
+
+
 `}</style>
 
-   </body>
+   </div>
   );
 
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:8000/wp-json/wp/v2/posts',
-    timeout: 1000,
-    headers: {'Authorization': 'Bearer '+ 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMCIsImlhdCI6MTU5NTYwNzY1NCwibmJmIjoxNTk1NjA3NjU0LCJleHAiOjE1OTYyMTI0NTQsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.mtLXiyEyvGhFKdLKIYFEhil186ptJrPjfgzjJFg3C5M'}
-  });
-
- function getData(){
-
-    instance.get('/')
-    .then(response => {
-      console.log(response)
-      return response.data;
-    })
-  }
+ 
 
 
 NewsPage.getInitialProps = async () => {
 
-  const cookies = new Cookies();
-  const token = cookies.get('token');
-  var response;
 
-  if( token != null){
-
-    const api = 'http://localhost:8000/wp-json/wp/v2/posts?&status=private'; 
-    response = await axios.get(api , { headers: {"Authorization" : `Bearer ${token}`}} );
-  }
-
-  else{
 
     const api = 'http://localhost:8000/wp-json/wp/v2/posts/'; 
-    response = await axios.get(api);
+    var response = await axios.get(api);
 
-  
-  }
-  
+    
   return {
       posts: response.data
   }
 }
+
+
 
 export default NewsPage;
 
