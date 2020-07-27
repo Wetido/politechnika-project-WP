@@ -40,8 +40,9 @@ function getImg(excpert){
           {
             props.posts.map( post => {
               return (
-              <div class="single-post">
                 <Link href={`/galeria/[slug]`} as={`/galeria/${post.slug}`}>
+              <div class="single-post">
+
                 <li key={ post.id }  class="post-article">
                 <div>
 
@@ -52,9 +53,9 @@ function getImg(excpert){
                   <img class="thumbnail-post" src = {getImg(post.content.rendered)} ></img>
                   </div>
                 </div>
-                </li>       
-                </Link>
+                </li>      
               </div>
+              </Link>
               )
             })}
           </ul>
@@ -142,6 +143,15 @@ function getImg(excpert){
   cursor: pointer;
 }
 
+li{
+
+  list-style: none;
+}
+
+ul{
+
+  list-style: none;
+}
 
 
 
