@@ -27,6 +27,7 @@ const AboutPage = (props) => (
       font-size: 1.8rem;
       text-align: center;
     }
+  
     `}</style>
   </div>
   );

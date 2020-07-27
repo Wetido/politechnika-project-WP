@@ -74,7 +74,7 @@ function getImg(excpert){
 .thumbnail-post {
   height: auto;
   float: center;
-  max-width: 100%;
+  max-width: 70%;
 }
 
 .articles-wrapper {

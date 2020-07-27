@@ -5,8 +5,11 @@ import Head from 'next/head';
 
 const Footer = () => (
 <div>
+  <Head>
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
+  </Head>
     <footer>
-        <div class="footer-content">Powered by Ghost.js</div>
+        <div class="footer-content">Politechnika Lubelska</div>
     </footer>
     <style>{`
   footer {
@@ -21,9 +24,11 @@ const Footer = () => (
     border-top: 1px solid white;
     justify-content:center;
     align-items:center;
-     
+    color:white;
+    font-family:Poppins;
     
     }
+
 
     `}</style>
 </div>

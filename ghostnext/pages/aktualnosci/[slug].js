@@ -3,6 +3,7 @@ import Head from 'next/head';
 import NavbarThird from '../../components/Navbar-third';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
+import Footer from '../../components/footer';
 
 
 //GENEROWANIE JAKEIKOLWIEK POSTU GDY MAMY DOSTEP DO JEGO ENDPOINTU
@@ -31,7 +32,7 @@ const PostPage = (props) => {
 
           </div>
         </main>
-
+    
       <style>{`
 
       *{
@@ -79,7 +80,14 @@ const PostPage = (props) => {
         transition: all 0.4s ease;
       }
 
+      .wp-block-image{
+        max-width:50%; 
+        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       
+        }
 
       }
 
