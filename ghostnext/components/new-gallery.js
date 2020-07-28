@@ -28,6 +28,7 @@ const Carousel = () => (
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
   </ol>
   
   <div class="carousel-inner">
@@ -47,6 +48,14 @@ const Carousel = () => (
           </div>
         </div>
         
+        <div class="carousel-item">
+          <img class="d-block w-100" src={p3} alt="Third slide"/>
+          <div class="carousel-caption d-none d-md-block">
+          <h5>Witajcie w naszej bajce</h5>
+            <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
+          </div>
+        </div>
+
         <div class="carousel-item">
           <img class="d-block w-100" src={p3} alt="Third slide"/>
           <div class="carousel-caption d-none d-md-block">

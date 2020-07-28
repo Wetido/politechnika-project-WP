@@ -2,13 +2,32 @@
 import NavbarThird from'../../components/Navbar-third';
 import axios from 'axios'
 import Spacer from '../../components/Spacer';
-
+import Head from 'next/head';
 //TU ZNAJDUJE SIĘ POJEDYNCZY POST GALERII
 
 const PostPage = (props) => {
-    // Render post title and content in the page from props
+  
+
+  // Render post title and content in the page from props
     return (
       <body>
+
+<Head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <script dangerouslySetInnerHTML={{ __html: 
+            `
+
+            $('figure').on('click','img', function(){
+              window.open($(this).attr('src'));
+            })
+
+            ` 
+}} />
+
+  </Head>
+
+
         <NavbarThird/>
         <main>
 
