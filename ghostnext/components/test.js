@@ -1,5 +1,8 @@
-import Link from 'next/link';
+
 import Head from 'next/head';
+import axios from 'axios'
+
+import useState from 'react';
 import p1 from '../images/1.jpg';
 import p2 from '../images/2.jpg';
 import p3 from '../images/3.jpg';
@@ -11,22 +14,73 @@ import p7 from '../images/7.jpg';
 //folderu pages, na zasadzie np 
 //pages/post/index.js
 
+
 function getImg(excpert){
 
   const startPosition = 'src=';
   const endPosition = '.jpg';
 
-  var start = ( excpert.indexOf(startPosition) );
-  var end = ( excpert.indexOf(endPosition) );
+  console.log(10);
+  console.log(20);
 
-  console.log(start);
-  console.log(end);
+  var startArr = [];
+  var endArr = [];
 
-  return excpert.slice(start +5 ,end + 4);
+  var idS = excpert.indexOf(startPosition);
+  var idE = excpert.indexOf(endPosition);
+
+  while (idS != -1) {
+    startArr.push(idS);
+    endArr.push(idE);
+
+    idS = excpert.indexOf(startPosition, idS + 1);
+    idE = excpert.indexOf(endPosition, idS + 1);
+  }
+
+
+  console.log(startArr);
+  console.log(endArr);
+  
+  console.log(excpert.slice(startArr[1] +5 ,endArr[1] + 4))
+
+  return excpert.slice(startArr[1] +5 ,endArr[1] + 4)
+
 }
 
+export default class Test extends React.Component {
 
-const Carousel = () => (
+
+  constructor(props) {
+    super(props);
+
+    this.state = { isLoading: true };
+
+    axios.get( `http://localhost:8000/wp-json/wp/v2/pages?slug=slider`)
+    .then((response) => {
+
+      this.setState({ posts: response.data[0] });
+      this.setState({ isLoading: false });
+    })
+
+   }
+
+
+  state = {
+    posts: []
+  }
+
+
+
+  render() {
+
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <div className="App">Loading...</div>;
+    }
+
+
+    return (
 
 <div>
     <Head>
@@ -47,36 +101,14 @@ const Carousel = () => (
   
   <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src={p6} alt="First slide"/>
+            <img class="d-block w-100" src={getImg(this.state.posts.content.rendered)} alt="First slide"/>
             <div class="carousel-caption d-none d-md-block">
               <h5>Witajcie w naszej bajce</h5>
               <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
             </div>
         </div>
        
-        <div class="carousel-item">
-            <img class="d-block w-100" src={p7} alt="Second slide"/>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Witajcie w naszej bajce</h5>
-              <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
-          </div>
-        </div>
         
-        <div class="carousel-item">
-          <img class="d-block w-100" src={p3} alt="Third slide"/>
-          <div class="carousel-caption d-none d-md-block">
-          <h5>Witajcie w naszej bajce</h5>
-            <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
-          </div>
-        </div>
-
-        <div class="carousel-item">
-          <img class="d-block w-100" src={p3} alt="Third slide"/>
-          <div class="carousel-caption d-none d-md-block">
-          <h5>Witajcie w naszej bajce</h5>
-            <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
-          </div>
-        </div>
   </div>
  
  
@@ -126,11 +158,8 @@ height:400px;
 }
 
 `}</style>
+
 </div>
 
-);
-
-
-
-
-export default Carousel;
+    )}
+}

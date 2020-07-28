@@ -1,7 +1,7 @@
 
 import React from "react";
 import dynamic from 'next/dynamic';
-import Carousel from '../components/new-gallery';
+import Carousel from '../components/test';
 
 import Head from 'next/head';
 import NavbarThird from '../components/Navbar-third';
