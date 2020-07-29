@@ -1,4 +1,4 @@
-
+import Head from 'next/head';
 import NavbarThird from '../components/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
@@ -8,56 +8,119 @@ import Spacer from '../components/Spacer';
 import Form from '../components/contact-form';
 import map from '../images/Mapa.jpg';
 
-  const Contact = () => (
+const Kontakt = (props) => (
 
-      <div>
-        <NavbarThird></NavbarThird>
-        <h2 class="news-header">Odezwij się do nas...</h2>
-        <Spacer/>
+  <body>
 
-        <Form/>
+  <Head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        <h2 class="news-header">Jak dojadę?</h2>
-        <Spacer></Spacer>
-        <div class="mapa">
-        <img class="mapa2" src={map}></img>
-        </div>
+          <script dangerouslySetInnerHTML={{ __html: 
+            `
+
+            $('figure').on('click','img', function(){
+              window.open($(this).attr('src'));
+            })
+
+            ` 
+          }} />
+
+  </Head>
+
+    <div>
+
+      <NavbarThird/>
+    
+      <h1 class = "news-header">{props.posts.title.rendered}</h1>
+      <Spacer></Spacer>
+      <div class = "grid-container">
+               <div dangerouslySetInnerHTML={{ __html:props.posts.content.rendered}} /> 
+
+      </div>
+
+    </div>
 
 
-        <Footer></Footer>
-        <style >{` 
+
+    <style >{` 
+
+h2{
+padding: 30px 0 0 0;
+text-transform: uppercase;
+letter-spacing: 2px;
+font-weight: bold;
+font-size: 1.2rem;
+text-align: center;
+}
+
+p{
+  padding: 30px 0 0 0;
+  text-align: center;
+}
 
 .news-header{
 
-    padding: 30px 0 0 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  img.mapa2{
-    border: 2px solid black;
-    border-radius: 50px 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-.mapa{
-    
-padding:0 0 30px 0;
+padding: 30px 0 0 0;
+text-transform: uppercase;
+letter-spacing: 2px;
+font-weight: bold;
+font-size: 1.8rem;
+text-align: center;
+}
+
+body {
+background: #f5f0f0;
+}
+
+.element{
+padding:1000px;
+}
+
+.wp-block-image{
+max-width:80% 
+border: 2px solid black;
+display: flex;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+}
+.wp-block-image img{
+  width: 100%;
+}
+
+.wp-block-embed__wrapper{
+background-color: #353a40;
+box-shadow: 0 5px 0 #736f72;
+color: white;
+padding: 1em 1.5em;
+position: block;
+text-decoration: none;
+text-transform: uppercase;
+width:30%;
+margin-left: auto;
+margin-right: auto;
 
 }
 
+.wp-block-embed__wrapper:active {
+box-shadow: none;
+top: 5px;
+}
 `}</style>
 
-   </div>
-  );
+</body>
+
+);
 
 
 
+Kontakt.getInitialProps = async () => {
+const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/pages?slug=kontakt`)
+return {
+  posts: response.data[0]
+}
+}
 
-export default Contact;
+export default Kontakt;
 
 

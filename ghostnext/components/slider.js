@@ -33,7 +33,7 @@ export default class Test extends React.Component {
         images : 0
       }
 
-    axios.get( `http://localhost:8001/wp-json/wp/v2/pages?slug=slider`)
+    axios.get( `http://localhost:8000/wp-json/wp/v2/pages?slug=slider`)
     .then((response) => {
 
       this.setState({ posts: response.data[0] });
