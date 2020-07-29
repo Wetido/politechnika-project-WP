@@ -15,59 +15,67 @@ import p7 from '../images/7.jpg';
 //pages/post/index.js
 
 
-function getImg(excpert){
 
-  const startPosition = 'src=';
-  const endPosition = '.jpg';
-
-  console.log(10);
-  console.log(20);
-
-  var startArr = [];
-  var endArr = [];
-
-  var idS = excpert.indexOf(startPosition);
-  var idE = excpert.indexOf(endPosition);
-
-  while (idS != -1) {
-    startArr.push(idS);
-    endArr.push(idE);
-
-    idS = excpert.indexOf(startPosition, idS + 1);
-    idE = excpert.indexOf(endPosition, idS + 1);
-  }
-
-
-  console.log(startArr);
-  console.log(endArr);
-  
-  console.log(excpert.slice(startArr[1] +5 ,endArr[1] + 4))
-
-  return excpert.slice(startArr[1] +5 ,endArr[1] + 4)
-
-}
 
 export default class Test extends React.Component {
 
 
+
+
   constructor(props) {
     super(props);
+    
+      this.state = {
+        posts: [],
+        startArr: [],
+        endArr: [],
+        isLoading : true,
+        images : 0
+      }
 
-    this.state = { isLoading: true };
-
-    axios.get( `http://localhost:8000/wp-json/wp/v2/pages?slug=slider`)
+    axios.get( `http://localhost:8001/wp-json/wp/v2/pages?slug=slider`)
     .then((response) => {
 
       this.setState({ posts: response.data[0] });
+
+
+      var images = this.getImg(this.state.posts.content.rendered);
+      this.setState({ images: images});
+
+
       this.setState({ isLoading: false });
     })
 
    }
 
 
-  state = {
-    posts: []
+  getImg = (excpert) => {
+
+    const startPosition = 'src=';
+    const endPosition = '.jpg';
+  
+    var startArr = [];
+    var endArr = [];
+  
+    var idS = excpert.indexOf(startPosition);
+    var idE = excpert.indexOf(endPosition);
+  
+    while (idS != -1) {
+      startArr.push(idS);
+      endArr.push(idE);
+  
+      idS = excpert.indexOf(startPosition, idS + 1);
+      idE = excpert.indexOf(endPosition, idS + 1);
+    }
+    
+  
+    this.setState({startArr: startArr});
+    this.setState({endArr : endArr});
+    
+    //return excpert.slice(startArr[1] +5 ,endArr[1] + 4)
+    return startArr.length
   }
+
 
 
 
@@ -77,10 +85,11 @@ export default class Test extends React.Component {
 
     if (isLoading) {
       return <div className="App">Loading...</div>;
-    }
-
+    } 
+    
 
     return (
+
 
 <div>
     <Head>
@@ -89,26 +98,51 @@ export default class Test extends React.Component {
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <script dangerouslySetInnerHTML={{ __html: 
+            `
+
+            $(document).ready(function() {
+
+              $('#1').addClass('active');
+              $('#indicatior1').addClass('active');
+
+          });
+
+            ` 
+          }} />
+
+    
     </Head>
+
+    
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+      {this.state.startArr.map((post, index) => (
+
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" id={'indicatior'+index}></li>
+
+      ))}
   </ol>
   
   <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src={getImg(this.state.posts.content.rendered)} alt="First slide"/>
+
+
+        {this.state.startArr.map((post, index) => (
+            <div class="carousel-item" id={index}>
+            <img class="d-block w-100" src={this.state.posts.content.rendered.slice(post +5 ,this.state.endArr[index] + 4)} alt="First slide"/>
             <div class="carousel-caption d-none d-md-block">
               <h5>Witajcie w naszej bajce</h5>
               <p>Spójrzcie jak tu pięknie, dobrobyt aż chce się żyć</p>
             </div>
-        </div>
-       
-        
+            </div>
+
+        ))}
+  
   </div>
  
  

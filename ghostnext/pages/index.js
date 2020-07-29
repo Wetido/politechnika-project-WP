@@ -1,7 +1,7 @@
 
 import React from "react";
 import dynamic from 'next/dynamic';
-import Carousel from '../components/test';
+import Carousel from '../components/slider';
 
 import Head from 'next/head';
 import NavbarThird from '../components/Navbar-third';
@@ -212,7 +212,7 @@ const IndexPage = (props) => (
 );
 
 IndexPage.getInitialProps = async () => {
-  const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/posts?per_page=3`);
+  const response = await axios.get(`http://localhost:8001/wp-json/wp/v2/posts?per_page=3`);
   return {
       posts: response.data
   }
