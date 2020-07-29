@@ -115,7 +115,35 @@ function removeParagraphTags (excerpt) {
   margin: 5px;
   cursor: pointer;
 }
+@media screen and (max-width: 1200px){
 
+
+  .single-post{
+    width:100%;
+    height: auto;
+  }
+
+  .page{
+    width:100%;
+    margin: 0;
+    padding: 2%;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+ 
+}
+
+@media screen and (max-width: 768px){
+  
+  .post-title{
+    font-size: 1.5rem;
+  }
+
+} 
 
 
 
