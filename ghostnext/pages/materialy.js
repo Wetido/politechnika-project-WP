@@ -57,12 +57,12 @@ function removeParagraphTags (excerpt) {
 }
 
 .post-title{
-
-  padding: 20px 0 0 0;
+  
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
   font-size: 2rem;
+  text-align: center;
 }
 
 .news-header{
@@ -91,7 +91,7 @@ function removeParagraphTags (excerpt) {
   list-style: none;
   display: inline-block;
   width: 49%;
-  height: 300px;
+  height: auto;
   text-align: center;
 
   border-radius: 10px;
@@ -115,7 +115,35 @@ function removeParagraphTags (excerpt) {
   margin: 5px;
   cursor: pointer;
 }
+@media screen and (max-width: 1200px){
 
+
+  .single-post{
+    width:100%;
+    height: auto;
+  }
+
+  .page{
+    width:100%;
+    margin: 0;
+    padding: 2%;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+ 
+}
+
+@media screen and (max-width: 768px){
+  
+  .post-title{
+    font-size: 1rem;
+  }
+
+} 
 
 
 

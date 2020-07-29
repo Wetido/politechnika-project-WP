@@ -153,6 +153,32 @@ ul{
   list-style: none;
 }
 
+@media screen and (max-width: 1200px){
+  
+  .post-title{
+    font-size: 1.5rem;
+  }
+
+  .single-post{
+    width:100%;
+  }
+
+  .page {
+    margin: 0 0 0 0;
+  }
+
+  ul.page{
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px){
+  
+  .post-title{
+    font-size: 1rem;
+  }
+
+} 
 
 
 

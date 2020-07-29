@@ -185,7 +185,7 @@ html {
     background-color: #56baed;
     border: none;
     color: white;
-    padding: 15px 80px;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -201,6 +201,8 @@ html {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    margin: 5px;
+    width: 80%;
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {

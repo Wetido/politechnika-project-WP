@@ -177,6 +177,7 @@ const IndexPage = (props) => (
       transition: 0.8s;
       position: relative:
       overflow:hidden;
+      
     }
 
 

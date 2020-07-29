@@ -2,11 +2,8 @@ import Head from 'next/head';
 import NavbarThird from '../components/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
-import Link from 'next/link';
-import Footer from '../components/footer';
 import Spacer from '../components/Spacer';
-import Form from '../components/contact-form';
-import map from '../images/Mapa.jpg';
+
 
 const Kontakt = (props) => (
 
