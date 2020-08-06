@@ -5,7 +5,7 @@ import axios from 'axios'
 import Spacer from '../components/Spacer';
 
 
-const Kontakt = (props) => (
+const Wspolpraca = (props) => (
 
   <body>
 
@@ -105,8 +105,8 @@ top: 5px;
 }
 
 ul{
-  margin-left: 5%;
-  margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 `}</style>
 
@@ -116,13 +116,13 @@ ul{
 
 
 
-Kontakt.getInitialProps = async () => {
-const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/pages?slug=kontakt`)
+Wspolpraca.getInitialProps = async () => {
+const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/pages?slug=wspolpraca`)
 return {
   posts: response.data[0]
 }
 }
 
-export default Kontakt;
+export default Wspolpraca;
 
 

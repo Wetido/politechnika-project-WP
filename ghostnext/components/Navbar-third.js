@@ -51,6 +51,7 @@ class NavbarThird extends React.Component{
           <Link href={'/aktualnosci'}><a class="nav-item nav-link " > aktualności</a></Link>
           <Link href={'/galeria'}><a class="nav-item nav-link " >galeria</a></Link>
           <Link href={'/kontakt'}><a class="nav-item nav-link ">kontakt</a></Link>
+          <Link href={'/wspolpraca'}><a class="nav-item nav-link ">współpraca</a></Link>
           <a onClick={logout} class="nav-item nav-link ">wyloguj</a>
           <Link href={'/materialy'}><a class="nav-item nav-link ">materiały</a></Link>
           
@@ -106,6 +107,7 @@ class NavbarThird extends React.Component{
             <Link href={'/aktualnosci'}><a class="nav-item nav-link " > aktualności</a></Link>
             <Link href={'/galeria'}><a class="nav-item nav-link " > galeria</a></Link>
             <Link href={'/kontakt'}><a class="nav-item nav-link ">kontakt</a></Link>
+            <Link href={'/wspolpraca'}><a class="nav-item nav-link ">współpraca</a></Link>
             <Link href={'/login-page'}><a class="nav-item nav-link ">login</a></Link>
             
               
