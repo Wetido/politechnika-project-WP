@@ -38,7 +38,7 @@ const Workers = () => (
         <p>Dr inż. Machlarz Radosław</p> 
         </div>
 
-        <Link href={'/aktualnosci'}><a class="view-more-worker">zobacz więcej</a></Link>
+        <Link href={'/pl/aktualnosci'}><a class="view-more-worker">zobacz więcej</a></Link>
 
     </div>
 
