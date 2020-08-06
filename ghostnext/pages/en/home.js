@@ -1,13 +1,13 @@
 
 import React from "react";
 import dynamic from 'next/dynamic';
-import Carousel from '../components/pl/slider';
+import Carousel from '../../components/en/slider';
 
 import Head from 'next/head';
-import NavbarThird from '../components/pl/Navbar-third';
-import Workers from '../components/pl/Workers';
-import Footer from '../components/pl/footer';
-import Spacer from '../components/pl/Spacer';
+import NavbarThird from '../../components/en/Navbar-third';
+import Workers from '../../components/en/Workers';
+import Footer from '../../components/en/footer';
+import Spacer from '../../components/en/Spacer';
 
 import Link from 'next/link';
 import axios from 'axios';
@@ -15,7 +15,7 @@ import axios from 'axios';
 
 
 const NoSSRWorkers = dynamic( () => 
-import('../components/pl/workers'), { ssr: false } )
+import('../../components/en/workers'), { ssr: false } )
 
 
 function removeParagraphTags (excerpt) {
@@ -51,7 +51,7 @@ const IndexPage = (props) => (
 
 
     <section class="news-wrapper">
-    <h2 class="news-branch">Aktualności</h2>
+    <h2 class="news-branch">News</h2>
     <Spacer/>
     <ul class = "box">
 
@@ -64,8 +64,8 @@ const IndexPage = (props) => (
 
                 <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>        
 
-                <Link href={`/aktualnosci/[slug]`} as={`/aktualnosci/${post.slug}`}>
-                <button class="view-more">Zobacz więcej</button> 
+                <Link href={`/en/aktualnosci/[slug]`} as={`/en/aktualnosci/${post.slug}`}>
+                <button class="view-more">See more</button> 
                 </Link>
             </li>
 
