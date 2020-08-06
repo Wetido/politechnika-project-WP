@@ -116,7 +116,7 @@ function removeParagraphTags (excerpt) {
     margin: 10px 10px 10px 10px;
     list-style: none;
     display: inline-block;
-    width: 48%;
+    width: 32%;
     height: auto;
     text-align: center;
   
