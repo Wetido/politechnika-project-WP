@@ -1,4 +1,4 @@
-import obrazek4 from '../images/4.jpg';
+
 import NavbarThird from '../components/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
