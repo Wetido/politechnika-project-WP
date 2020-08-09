@@ -12,7 +12,7 @@ import Spacer from '../components/pl/Spacer';
 import Link from 'next/link';
 import axios from 'axios';
 
-
+import logo from '../images/logo.jpg';
 
 const NoSSRWorkers = dynamic( () => 
 import('../components/pl/workers'), { ssr: false } )
@@ -28,14 +28,14 @@ const IndexPage = (props) => (
  <body>
 <Head>
 <link rel="shortcut icon" href="ghostnext\public\favicon.ico" />
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 <script>
   
   </script>
 </Head>
 
 
-  <div>
+  <div class ="scroll-contatiner">
 
 
     <NavbarThird class = "navbar"></NavbarThird>
@@ -45,6 +45,11 @@ const IndexPage = (props) => (
 
 
     <section class="carousel-wrapper">
+      <div class="logos">
+        <img src={logo} class="logo-type"></img> 
+        <img src={logo} class="logo-type"></img> 
+      </div>
+
       <Carousel class="carousel"/>
     </section>
 
@@ -80,10 +85,10 @@ const IndexPage = (props) => (
       <Workers/>
 
     </section>
+    <Footer/>
 
     </div>
 
-    <Footer/>
 
 
 
@@ -94,7 +99,36 @@ const IndexPage = (props) => (
 
   }
 
+  .scroll-contatiner{
+    
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
 
+  }
+
+
+  section{
+
+    scroll-snap-align: start;
+    height: 100vh;
+
+  }
+
+  .logos{
+
+    display: flex;
+  }
+
+  .logo-type{
+
+    margin: 5px auto 40px;
+    width: 16%;
+    height: 35%;
+
+  }
 
   .carousel{
 
@@ -103,28 +137,23 @@ const IndexPage = (props) => (
   }
 
 
-  .padding-navbar{
-
-
-    padding: 35px;
-  }
-
   .carousel-wrapper{
 
     background: #e3e3e3;
-    padding: 60px;
+    padding: 120px;
   }
 
   .news-wrapper{
 
     background: #ebe8e8;
-    padding: 30px;
+
+    padding: 100px 30px;
   }
 
   .workers-wrapper{
 
     background: #e3e3e3;
-    padding: 60px;
+    padding: 120px;
   }
 
   .navbar{

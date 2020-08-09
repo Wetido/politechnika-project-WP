@@ -6,6 +6,8 @@ import Cookies from 'universal-cookie';
 //folderu pages, na zasadzie np 
 //pages/post/index.js
 
+import logo2 from '../../images/logo.jpg';
+
 function logout() {
      
   const cookies = new Cookies();
