@@ -13,6 +13,7 @@ import Link from 'next/link';
 import axios from 'axios';
 
 import logo from '../images/logo.jpg';
+import logo_napedy from '../images/logo-napedy.jpg';
 
 const NoSSRWorkers = dynamic( () => 
 import('../components/pl/workers'), { ssr: false } )
@@ -45,12 +46,13 @@ const IndexPage = (props) => (
 
 
     <section class="carousel-wrapper">
-      <div class="logos">
-        <img src={logo} class="logo-type"></img> 
-        <img src={logo} class="logo-type"></img> 
-      </div>
+
 
       <Carousel class="carousel"/>
+      <div class="logos">
+        <img src={logo} class="logo-type"></img> 
+        <img src={logo_napedy} class="logo-type"></img> 
+      </div>
     </section>
 
 
@@ -120,6 +122,7 @@ const IndexPage = (props) => (
   .logos{
 
     display: flex;
+    padding: 15px 0 0 0;
   }
 
   .logo-type{
@@ -127,6 +130,7 @@ const IndexPage = (props) => (
     margin: 5px auto 40px;
     width: 16%;
     height: 35%;
+    
 
   }
 
