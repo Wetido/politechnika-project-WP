@@ -39,7 +39,7 @@ function removeParagraphTags (excerpt) {
         {
           props.posts.map( post => {
             return (
-              <Link href={`/pracownicy/[slug]`} as={`/pracownicy/${post.slug}`}>
+              <Link href={`/en/pracownicy/[slug]`} as={`/en/pracownicy/${post.slug}`}>
             <div class="single-post">
 
                 <li key={ post.id }  class="post-article">
