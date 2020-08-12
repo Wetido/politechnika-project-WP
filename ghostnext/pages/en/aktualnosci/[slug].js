@@ -101,7 +101,7 @@ const PostPage = (props) => {
   PostPage.getInitialProps = async (params) => {
 
     // Make request for posts.
-    const response = await axios.get( `http://localhost:8000/wp-json/wp/v2/posts?slug=${ params.query.slug }` )
+    const response = await axios.get( `http://localhost:8000/wp-json/wp/v2/en_posts?slug=${ params.query.slug }` )
 
     // Return our only item in array from response to posts object in props.
     return {

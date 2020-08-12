@@ -1,23 +1,38 @@
 
-import NavbarThird from '../../components/en/Navbar-third';
+import NavbarThird from '../../../components/pl/Navbar-third';
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import Link from 'next/link';
 import Cookies from 'universal-cookie';
 
-import Spacer from '../../components/en/spacer';
+import Spacer from '../../../components/pl/Spacer';
 
 function removeParagraphTags (excerpt) {
   return excerpt.substr(3, excerpt.length - 8)
 }
 
 
-  const NewsPage = (props) => (
+function getImg(excpert){
+
+  const startPosition = 'src=';
+  const endPosition = '.jpg';
+
+  var start = ( excpert.indexOf(startPosition) );
+  var end = ( excpert.indexOf(endPosition) );
+
+  console.log(start);
+  console.log(end);
+
+  return excpert.slice(start +5 ,end + 4);
+}
+
+
+  const Dzialanosc = (props) => (
 
       <div>
         <NavbarThird></NavbarThird>
-        <h2 class="news-header">Recent posts</h2>
-        <Spacer/>
+        <h2 class="news-header">Nasza dzialanosc</h2>
+        <Spacer></Spacer>
 
 
         <section class="articles-wrapper"> 
@@ -25,17 +40,20 @@ function removeParagraphTags (excerpt) {
           {
             props.posts.map( post => {
               return (
-                <Link href={`/en/aktualnosci/[slug]`} as={`/en/aktualnosci/${post.slug}`}>
+                <Link href={`/pl/dzialalnosc/[slug]`} as={`/pl/dzialalnosc/${post.slug}`}>
               <div class="single-post">
-                
+
                 <li key={ post.id }  class="post-article">
                 <div>
 
                   <h1 class="post-title">{ post.title.rendered }</h1> 
-                  {/* <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>           do poprawienia */}
+                  
+                  
+                  <div class="fotki">
+                  <img class="thumbnail-post" src = {getImg(post.content.rendered)} ></img>
+                  </div>
                 </div>
-                </li>       
-
+                </li>      
               </div>
               </Link>
               )
@@ -48,7 +66,17 @@ function removeParagraphTags (excerpt) {
 
 ///////////////////////////////
 
+.fotki {
+  height: 100%;
+  width: 100%;
 
+
+}
+.thumbnail-post {
+  height: auto;
+  float: center;
+  max-width: 70%;
+}
 
 .articles-wrapper {
 
@@ -58,7 +86,6 @@ function removeParagraphTags (excerpt) {
 
 .post-title{
 
-  padding: 20px 0 0 0;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
@@ -86,12 +113,12 @@ function removeParagraphTags (excerpt) {
 
 .single-post{
 
-  padding: 30px;
-  margin: 10px 0px 10px 10px;
+  padding: 20px;
+  margin: 10px 10px 10px 10px;
   list-style: none;
   display: inline-block;
-  width: 49%;
-  height: 300px;
+  width: 48%;
+  height: auto;
   text-align: center;
 
   border-radius: 10px;
@@ -115,32 +142,40 @@ function removeParagraphTags (excerpt) {
   margin: 5px;
   cursor: pointer;
 }
-@media screen and (max-width: 1200px){
 
+li{
+
+  list-style: none;
+}
+
+ul{
+
+  list-style: none;
+}
+
+@media screen and (max-width: 1200px){
+  
+  .post-title{
+    font-size: 1.5rem;
+  }
 
   .single-post{
     width:100%;
-    height: auto;
   }
 
-  .page{
-    width:100%;
-    margin: 0;
-    padding: 2%;
+  .page {
+    margin: 0 0 0 0;
   }
 
-  *{
-    margin: 0;
+  ul.page{
     padding: 0;
   }
-
- 
 }
 
 @media screen and (max-width: 768px){
   
   .post-title{
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
 } 
@@ -153,24 +188,13 @@ function removeParagraphTags (excerpt) {
   );
 
 
- 
-
-
-NewsPage.getInitialProps = async () => {
-
-
-
-    const api = 'http://localhost:8000/wp-json/wp/v2/en_posts/'; 
-    var response = await axios.get(api);
-
-    
-  return {
-      posts: response.data
+  Dzialanosc.getInitialProps = async () => {
+    const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/dzialalnosc/`)
+    return {
+        posts: response.data
+    }
   }
-}
 
-
-
-export default NewsPage;
+export default Dzialanosc;
 
 

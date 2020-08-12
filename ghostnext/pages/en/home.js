@@ -1,4 +1,3 @@
-
 import React from "react";
 import dynamic from 'next/dynamic';
 import Carousel from '../../components/en/slider';
@@ -12,7 +11,8 @@ import Spacer from '../../components/en/Spacer';
 import Link from 'next/link';
 import axios from 'axios';
 
-
+import logo from '../../images/logo.jpg';
+import logo_napedy from '../../images/logo-napedy.jpg';
 
 const NoSSRWorkers = dynamic( () => 
 import('../../components/en/workers'), { ssr: false } )
@@ -28,14 +28,14 @@ const IndexPage = (props) => (
  <body>
 <Head>
 <link rel="shortcut icon" href="ghostnext\public\favicon.ico" />
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 <script>
   
   </script>
 </Head>
 
 
-  <div>
+  <div class ="scroll-contatiner">
 
 
     <NavbarThird class = "navbar"></NavbarThird>
@@ -45,7 +45,13 @@ const IndexPage = (props) => (
 
 
     <section class="carousel-wrapper">
+
+
       <Carousel class="carousel"/>
+      <div class="logos">
+        <img src={logo} class="logo-type"></img> 
+        <img src={logo_napedy} class="logo-type"></img> 
+      </div>
     </section>
 
 
@@ -62,10 +68,10 @@ const IndexPage = (props) => (
 
                 <h1 class = "post-a">{post.title.rendered}</h1>
 
-                <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>        
+                {/* <p dangerouslySetInnerHTML={{ __html: removeParagraphTags(post.excerpt.rendered)}}/>         */}
 
                 <Link href={`/en/aktualnosci/[slug]`} as={`/en/aktualnosci/${post.slug}`}>
-                <button class="view-more">See more</button> 
+                <button class="view-more">View more</button> 
                 </Link>
             </li>
 
@@ -80,10 +86,10 @@ const IndexPage = (props) => (
       <Workers/>
 
     </section>
+    <Footer/>
 
     </div>
 
-    <Footer/>
 
 
 
@@ -94,7 +100,38 @@ const IndexPage = (props) => (
 
   }
 
+  .scroll-contatiner{
+    
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
 
+  }
+
+
+  section{
+
+    scroll-snap-align: start;
+    height: 100vh;
+
+  }
+
+  .logos{
+
+    display: flex;
+    padding: 15px 0 0 0;
+  }
+
+  .logo-type{
+
+    margin: 5px auto 40px;
+    width: 16%;
+    height: 35%;
+    
+
+  }
 
   .carousel{
 
@@ -103,28 +140,23 @@ const IndexPage = (props) => (
   }
 
 
-  .padding-navbar{
-
-
-    padding: 35px;
-  }
-
   .carousel-wrapper{
 
     background: #e3e3e3;
-    padding: 60px;
+    padding: 120px;
   }
 
   .news-wrapper{
 
     background: #ebe8e8;
-    padding: 30px;
+
+    padding: 100px 30px;
   }
 
   .workers-wrapper{
 
     background: #e3e3e3;
-    padding: 60px;
+    padding: 120px;
   }
 
   .navbar{
@@ -213,7 +245,7 @@ const IndexPage = (props) => (
 );
 
 IndexPage.getInitialProps = async () => {
-  const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/posts?per_page=3`);
+  const response = await axios.get(`http://localhost:8000/wp-json/wp/v2/en_posts?per_page=3`);
   return {
       posts: response.data
   }

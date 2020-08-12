@@ -31,7 +31,7 @@ const Menu = () => (
     
 
     
-    <Link href={'/pl/o-katedrze/historia3'}> 
+    <Link href={'/pl/o-katedrze/historia'}> 
     <li class="links__item3 links__item" >
      
      <a class="links__link3 links__link">
