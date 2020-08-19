@@ -33,7 +33,7 @@ class Login extends React.Component{
 
       } else {
 
-        alert("Podales bledne dane");
+        alert("Invalid data");
         return null;
       }
     })
@@ -44,13 +44,13 @@ class Login extends React.Component{
         return null;
       } else {
 
-        alert("Dane poprawne");
+        alert("Valid data");
         const cookies = new Cookies();
         cookies.set('token', responseData.token, { path: '/' });
         console.log(cookies.get('token')); // Pacman 
 
         window.location.reload(false);
-        window.location.replace("http://localhost:3000/en/");
+        window.location.replace("http://localhost:3000/en/home");
         return responseData;
       }
 

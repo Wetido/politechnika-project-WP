@@ -210,7 +210,39 @@ const IndexPage = (props) => (
       transition: 0.8s;
       position: relative:
       overflow:hidden;
-      
+      border-radius: 5px;
+    }
+
+    .post-li{
+
+      padding: 30px;
+      margin: 10px 0px 10px 10px;
+      list-style: none;
+      display: inline-block;
+      width: 31%;
+      height: auto;
+      text-align: center;
+    
+      border-radius: 10px;
+      background-color: #fff;
+      border: 1px solid #3498db;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.3),
+        -webkit-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+        -moz-box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+        box-shadow: 9px 10px 76px -20px rgba(0,0,0,1);
+        transition: 0.2s;
+    
+    }
+    .post-li:hover{
+    
+      box-shadow:
+        2px rgba(0, 0, 0, 0.8),
+      padding: 3px;
+      margin: 5px;
+      cursor: pointer;
     }
 
 
